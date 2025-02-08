@@ -48,10 +48,10 @@ const about = {
 const experience = {
   icon: '',
   title:"My Experience",
-  description:"",
+  description:"Hello! This is My Working Expiriences",
   item:[
     {
-      company: "Pure-X Software Solution - Freelance",
+      company: "Pure-X Software Solution (Freelance)",
       position:"Full Stack Developer",
       duration:"2022- Present"
     },
@@ -115,7 +115,7 @@ const skils = {
     },
     {
       icon:<FaAngular/>,
-      name:AngularJs
+      name:"AngularJs"
     },
     {
       icon:<FaPhp/>,
@@ -163,13 +163,70 @@ const skils = {
 import {Tabs,TabsContent,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
+import { delay, easeIn, motion } from "framer-motion";
 
 
 const Resume = () => {
-  return (
-    <div>Resume page</div>
-  )
-}
+  return <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{delay:2.4 , duration:0.4 , ease:"easeIn"},}} className="min-H-[80vh] flex item-center justify-center py-12 xl:py-0">
+    <div className="container mx-auto">
+      <Tabs defaultChecked="Skils" className="flex flex-col xl:flex-row gap-[60px]">
+        <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+          <TabsTrigger value="experience">Experiece</TabsTrigger>
+          <TabsTrigger value="education">Education</TabsTrigger>
+          <TabsTrigger value="skils">Skils</TabsTrigger>
+          <TabsTrigger value="about_me">About Me</TabsTrigger>
+        </TabsList>
+        <div className="min-h-[70vh] w-full">
+          <TabsContent value="experience" className="w-full">
+            <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">{experience.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auti xl:mx-0">{experience.description}</p>
+                <ScrollArea>
+                  <ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
+                    {experience.item.map((item,index)=>{
+                      return <li key={index} className="bg-[#232329] h-[184px] py-6 px-18  rounded-xl flex flex-col justify-center item-center lg:items-start lg:px-5 gap-1">
+                        <span>{item.duration}</span>
+                        <h3>{item.position}</h3>
+                        <div>
+                          <span></span>
+                          <p>{item.company}</p>
+                        </div>
+                      </li>
+                    })}
+                  </ul>
+                </ScrollArea>
+            </div>
+          </TabsContent>
+          <TabsContent value="education" className="w-full">
+          <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">{education.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auti xl:mx-0">{education.description}</p>
+                <ScrollArea>
+                  <ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
+                    {education.item.map((item,index)=>{
+                      return <li key={index} className="bg-[#232329] h-[184px] py-6 px-18  rounded-xl flex flex-col justify-center item-center lg:items-start lg:px-5 gap-1">
+                        <span>{item.duration}</span>
+                        <h3>{item.position}</h3>
+                        <div>
+                          <span></span>
+                          <p>{item.company}</p>
+                        </div>
+                      </li>
+                    })}
+                  </ul>
+                </ScrollArea>
+            </div>
+          </TabsContent>
+          <TabsContent value="skils" className="w-full">
+            Skils
+          </TabsContent>
+          <TabsContent value="about_me" className="w-full">
+            About me
+          </TabsContent>
+        </div>
+      </Tabs>
+    </div>
+  </motion.div>;
+};
 
-export default Resume
+export default Resume;
