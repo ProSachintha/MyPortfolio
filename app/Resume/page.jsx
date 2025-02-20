@@ -5,7 +5,7 @@ import {SiTailwindcss,SiNextdotjs,SiExpress,SiMysql,SiAdobephotoshop} from "reac
 
 const about = {
   title:"About Me",
-  description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, excepturi eaque! Reprehenderit sed amet nostrum. Nobis, ratione!0",
+  description:" A highly motivated Software Engineering undergraduate with a passion for problem solving, full-stack development, and innovative solutions. Adept at working in collaborative team environments, quickly learning new technologies, and adapting to dynamic challenges.",
   info:[
     {
     fieldname:"Name",
@@ -83,11 +83,12 @@ const education = {
       duration:"2022 - Present"
     },
     
+    
   ]
 }
 const skils = {
   title: "My Skils",
-  description:"Thease Days I foucus To Web Development With MERN Stack.But I have Some Another Skils.",
+  description:"Thease Days I foucus To Web Development With MERN Stack.And Also I have Some Another Skils.",
   skilset:[
     {
       icon:<FaHtml5/>,
@@ -198,7 +199,7 @@ const Resume = () => {
           <TabsContent value="education" className="w-full">
           <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auti xl:mx-0">{education.description}</p>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{education.description}</p>
                 <ScrollArea className="h-[320px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
                     {education.item.map((item,index)=>{
@@ -216,10 +217,45 @@ const Resume = () => {
             </div>
           </TabsContent>
           <TabsContent value="skils" className="w-full">
-            Skils
+            <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                    <h3 className="text-4xl font-bold">{skils.title}</h3>
+                    <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0 ">{skils.description}</p>
+                    <ScrollArea className="h-[320px]">
+                      <ul className="grid grid-cols-5 lg:grid-cols-7 gap-[20px]">
+                        {skils.skilset.map((item,index)=>{
+                          return <li key={index}>
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-full h-[100px] bg-[#232329] flex justify-center items-center group">
+                                  <div className="text-6xl px-1 group-hover:text-accent-default transition-all duration-300">
+                                    {item.icon}
+                                  </div>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  {item.name}
+                                </TooltipContent>
+                              </Tooltip>
+                              </TooltipProvider>
+                          </li>
+                        })}
+                      </ul>
+                    </ScrollArea>
+            </div>
           </TabsContent>
           <TabsContent value="about_me" className="w-full">
-            About me
+            <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                        <h3 className="text-4xl font-bold">{about.title}</h3>
+                        <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{about.description}</p>
+                        <table className="max-w-[600px] mx-auto xl:mx-0">
+                          {about.info.map((item,index)=>{
+                            return <tr key={index}>
+                              <td className="text-white/60">{item.fieldname}</td>
+                              <td className="text-lg">{item.fieldvalue}</td>
+                            </tr>
+                          })}
+                        </table>
+
+            </div>
           </TabsContent>
         </div>
       </Tabs>
