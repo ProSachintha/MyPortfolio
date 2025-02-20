@@ -181,15 +181,13 @@ const Resume = () => {
             <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auti xl:mx-0">{experience.description}</p>
-                <ScrollArea>
-                  <ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
+                <ScrollArea className="h-[320px]"><ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
                     {experience.item.map((item,index)=>{
                       return <li key={index} className="bg-[#232329] h-[184px] py-6 px-18  rounded-xl flex flex-col justify-center item-center lg:items-start lg:px-5 gap-1">
-                        <span>{item.duration}</span>
-                        <h3>{item.position}</h3>
-                        <div>
-                          <span></span>
-                          <p>{item.company}</p>
+                        <span className="text-accent-default">{item.duration}</span>
+                        <h3 className="text-xl  min-h-[60px] text-center lg:text-left">{item.position}</h3>
+                        <div className="flex flex-col item-center gap-1">
+                          <p className="text-white/60">{item.company}</p>
                         </div>
                       </li>
                     })}
@@ -201,15 +199,15 @@ const Resume = () => {
           <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auti xl:mx-0">{education.description}</p>
-                <ScrollArea>
+                <ScrollArea className="h-[320px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2  gap-[30px] ">
                     {education.item.map((item,index)=>{
                       return <li key={index} className="bg-[#232329] h-[184px] py-6 px-18  rounded-xl flex flex-col justify-center item-center lg:items-start lg:px-5 gap-1">
-                        <span>{item.duration}</span>
-                        <h3>{item.position}</h3>
-                        <div>
-                          <span></span>
-                          <p>{item.company}</p>
+                        <h3 className="text-xl  min-h-[60px] text-center lg:text-left">{item.program}</h3>
+                        <span className="text-accent-default">{item.duration}</span>
+                        <div className="flex flex-col item-center gap-1">
+                          
+                          <p className="text-white/60">{item.institute}</p>
                         </div>
                       </li>
                     })}
